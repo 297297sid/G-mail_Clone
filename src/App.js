@@ -1,10 +1,13 @@
 import Signin from "./components/Signin";
-
+import Navbar from "./components/Navbar";
+import Main from "./components/Main";
 
 function App() {
   return (
     <div className="App">
-      <Signin/>
+      {/* <Signin /> */}
+      {/* <Navbar/> */}
+      <Main/>
     </div>
   );
 }
