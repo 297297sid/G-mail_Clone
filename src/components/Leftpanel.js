@@ -2,7 +2,7 @@ import React from "react";
 
 function Leftpanel() {
     return (
-        <div>
+        <div style={{backgroundColor:"#F9F9F9",minHeight:"100vh"}}>  
             Leftpanel
         </div>
     )
