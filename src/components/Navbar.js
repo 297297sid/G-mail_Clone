@@ -24,12 +24,12 @@ export default function Navbar() {
             edge="start"
             color="inherit"
             aria-label="menu"
-            sx={{ mr: "2vw",color:"#3C3C3C" }}
+            sx={{ mr: "0.3vw",color:"#3C3C3C" }}
           >
                                   <MenuIcon sx={{ width: "2vw" }} />
                   </IconButton>
-                  <img style={{width:"2vw" }} src={GmailLogo}/>
-          <Typography sx={{ color:"#3C3C3C",marginLeft:"3vw",fontSize:"1.6vw" }} variant="h6" component="div" >
+                  <img style={{width:"2.3vw" }} src={GmailLogo}/>
+          <Typography sx={{ color:"#3C3C3C",marginLeft:"1.3vw",fontSize:"1.8vw" }} variant="h6" component="div" >
             GMAIL
           </Typography>
                  </div>
