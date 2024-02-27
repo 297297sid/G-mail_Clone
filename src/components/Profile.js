@@ -6,6 +6,9 @@ import Modal from '@mui/material/Modal';
 import { Avatar} from '@mui/material';
 import { auth } from '../firebase/Setup';
 import Logout from "../images/logout.png";
+import {signOut} from "firebase/auth";
+import {  googleProvider } from "../firebase/Setup";
+import { useNavigate } from 'react-router-dom';
 
 const style = {
   position: 'absolute',
@@ -24,9 +27,24 @@ const style = {
 };
 
 export default function Profile() {
+    const navigate=useNavigate();
+
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const logOut= async()=>{
+   
+    try{
+        await signOut(auth,googleProvider);
+        auth.currentUser===null&& navigate("/")
+
+    }catch(err){
+        console.error(err);
+
+    }
+
+  }
 //   console.log("Photo URL:", auth.currentUser?.photoURL);
   return (
 
@@ -57,8 +75,8 @@ export default function Profile() {
           <Typography style={{textAlign:"center",fontSize:"1.4vw"}}>
             Hii,{auth.currentUser?.displayName}!
           </Typography>
-           <button style={{fontSize:"1vw", border:"1px solid white",borderRadius:"2vw",marginTop:"2vw",height:"4vw",width:"14vw",marginLeft:"8vw"}}><img  style={{width:"0.8vw"}} src={Logout}/>Signout</button>
-           <Typography style={{fontSize:"0.8vw",fontWeight:"100",textAlign:"center",marginTop:"1vw"}}> Privacy Policy Terms of Service</Typography>
+           <button onClick={logOut} style={{cursor:"pointer",fontSize:"1vw", border:"1px solid white",borderRadius:"2vw",marginTop:"2vw",height:"4vw",width:"14vw",marginLeft:"8vw"}}><img  style={{width:"0.8vw"}} src={Logout}/>Signout</button>
+           <Typography style={{fontSize:"0.8vw",fontWeight:"100",textAlign:"center",marginTop:"1vw",marginLeft:"2.8vw"}}> Privacy Policy Terms of Service</Typography>
         </Box>
       </Modal>
     </div>
