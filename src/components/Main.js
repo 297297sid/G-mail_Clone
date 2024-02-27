@@ -4,6 +4,7 @@ import Leftpanel from "./Leftpanel";
 import { Grid } from "@mui/material";
 import Middle from "./Middle";
 import Rightpanel from "./Rightpanel";
+import Footer from "./Footer";
 function Main() {
   return (
     <div>
@@ -19,6 +20,9 @@ function Main() {
         </Grid>
         <Grid item xs={1}>
           <Rightpanel/>
+        </Grid>
+        <Grid item xs={12}>
+          <Footer/>
         </Grid>
       </Grid>
     </div>

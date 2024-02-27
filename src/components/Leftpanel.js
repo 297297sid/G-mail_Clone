@@ -6,7 +6,9 @@ import Starred from "../images/stareed.png"
 import Sent from "../images/sent.png"
 function Leftpanel() {
     return (
-        <div style={{backgroundColor:"#F9F9F9",minHeight:"100vh",paddingTop:"1vw"}}>  
+        <div style={{position:"fixed",backgroundColor:"#F9F9F9",minHeight:"100vh",paddingTop:"6vw",width:
+        "17vw"}}>
+
             <div style={{height:"4.5vw",marginLeft:"1vw",width:"12vw",display:"flex" ,alignItems:"center", borderRadius:"20px",backgroundColor:"#c2e7ff"}}>
                 <img src={Pen} style={{ width: "1.2vw",marginLeft:"2vw" }} />
                 <h4 style={{ fontSize:"1.3vw",marginLeft:"1.6vw",fontWeight:"400" ,fontSize:"1.3vw"}} > Compose</h4>
