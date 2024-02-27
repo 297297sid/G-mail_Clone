@@ -3,10 +3,14 @@ import { Button } from "@mui/material";
 import GoogleImage from "../images/google.png"
 import { signInWithPopup } from "firebase/auth";
 import { auth, googleProvider } from "../firebase/Setup";
+import { useNavigate } from "react-router-dom";
+
 function Signin() {
+    const navigate=useNavigate();
     const googleSignin=async()=> {
         try {
             await signInWithPopup(auth,googleProvider)
+            navigate("main");
         } catch (err) {
             console.log(err);        }
     }
