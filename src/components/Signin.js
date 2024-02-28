@@ -2,14 +2,31 @@ import React from "react";
 import { Button } from "@mui/material";
 import GoogleImage from "../images/google.png"
 import { signInWithPopup } from "firebase/auth";
-import { auth, googleProvider } from "../firebase/Setup";
+import { auth, googleProvider,database } from "../firebase/Setup";
 import { useNavigate } from "react-router-dom";
-
+import { setDoc,doc } from "firebase/firestore";
 function Signin() {
-    const navigate=useNavigate();
+    const navigate = useNavigate();
+    
+    const addUser = async () => {
+        const userDoc=doc(database,"Users",`${auth.currentUser?.email}`)
+        try {
+            await setDoc(userDoc, {
+                username: auth.currentUser?.displayName,
+                email: auth.currentUser?.email,
+                id: auth.currentUser?.uid,
+            });
+        } catch (err) {
+            console.error(err);
+        }
+    }
+    
+
+
     const googleSignin=async()=> {
         try {
-            await signInWithPopup(auth,googleProvider)
+            await signInWithPopup(auth, googleProvider)
+            addUser()
             navigate("main");
         } catch (err) {
             console.log(err);        }

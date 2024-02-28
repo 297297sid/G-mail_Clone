@@ -12,7 +12,7 @@ import lens from "../images/lens.png";
 import { auth } from '../firebase/Setup';
 import Profile from './Profile';
 
-export default function Navbar() {
+export default function Navbar({ setSearch }) {
   return (
       <Grid container>
           <Box sx={{ flexGrow: 1 }}>
@@ -38,7 +38,7 @@ export default function Navbar() {
                       <Grid item xs={9}>
                           <div style={{marginLeft:"3vw",display:"flex" ,alignItems:"center",borderRadius:"40px",backgroundColor:"#E4EFFA",width:"55vw",height: "3.0vw"}}>
                           <img src={lens} style={{ height: "1.3vw", width: "1.3vw",alignItems:"center" ,marginLeft:"15px"}} />
-                          <input placeholder='Search in mail' style={{ marginLeft:"3vw" ,height: "3vw", width: "45vw",backgroundColor:"#E4EFFA", border:"none" }} />
+                <input onChange={(e) => setSearch(e.target.value)} placeholder='Search in mail' style={{ marginLeft:"3vw" ,height: "2.8vw", width: "45vw",backgroundColor:"#E4EFFA", border:"none" ,outline:"none"}} />
                           
                         </div>
                       
