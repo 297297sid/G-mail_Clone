@@ -23,7 +23,11 @@ const style = {
 
 export default function Message() {
   const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
+  const [messageSent, setMessageSent] = React.useState(false);
+  const handleOpen = () => {
+    setOpen(true);
+    setMessageSent(false);
+  };
   const handleClose = () => setOpen(false);
   const [mailId, setMailId] = React.useState("");
   const [message, setMessage] = React.useState("");
@@ -34,7 +38,12 @@ export default function Message() {
     try {
         await addDoc(messageRef, {
           email:message
-      });
+        });
+      
+      setMessageSent(true);
+      setTimeout(() => {
+        handleClose(); // Close the modal after 5 seconds
+      }, 2000); 
     } catch (err) {
       console.error(err);
     }
@@ -130,6 +139,22 @@ export default function Message() {
             }}
           />
           <br />
+          {messageSent && ( // Display message sent notification
+            <div className="vh">
+              <span className="aT">
+                <span className="bAq">Message sent.......</span>
+                <div
+                  tabIndex="0"
+                  role="button"
+                  className="bBe"
+                  onClick={handleClose}
+                >
+                  <div className="bBf"></div>
+                </div>
+              </span>
+            </div>
+          )}
+          <br/>
 
                   <Button
                       onClick={inbox}

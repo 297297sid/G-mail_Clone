@@ -1,19 +1,22 @@
 import { RampRightRounded } from "@mui/icons-material";
 import React from "react";
-import Calendar from "../images/calendar.png"
-import Contact from "../images/contact.png"
-import Task from "../images/task.png"
-import Keep from "../images/bulb.png"
+import Notes from "../components/Notes"
+import Contacts from "./Contacts";
+import Events from "./Events";
+import Keep from "../components/Keep"
+
 
 function Rightpanel(){
     return(<div style={{backgroundColor:"#F9F9F9",minHeight:"100vh",position:"fixed",right:"0",width:"5vw",textAlign:"center",paddingTop:"6vw"}}>
-        <img  style={{width:"1.4vw",paddingTop:"2vw"}}src={Calendar}/>
+       <Events/>
         <br/>
-        <img style={{width:"1.4vw",paddingTop:"2vw"}} src={Keep}/>
+        <Keep/>
         <br/>
-        <img style={{width:"1.4vw",paddingTop:"2vw"}} src={Task}/>
+        <Notes/>
         <br/>
-        <img  style={{width:"1.4vw",paddingTop:"2vw"}} src={Contact}/>
+        <Contacts/>
+        
+   
     </div>)
 }
 export default Rightpanel;
