@@ -29,7 +29,8 @@ function Signin() {
             addUser()
             navigate("main");
         } catch (err) {
-            console.log(err);        }
+             
+            console.error(err);        }
     }
     return(
         <div style={{position:"absolute" ,left:"25%",padding:"110px"}}>
