@@ -5,6 +5,9 @@ import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import Task from "../images/task.png";
 import cross from "../images/cross.png";
+import { collection, addDoc, getDocs } from "firebase/firestore";
+import { doc } from "firebase/firestore";
+import { database, auth } from "../firebase/Setup";
 const style = {
   position: "absolute",
   top: "50%",
@@ -21,15 +24,39 @@ export default function Notes() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  
-    
-    const addNote = () => {
-        
-        
+
+  const [notes, setNotes] = React.useState("");
+  const [notesData, setNotesData] = React.useState([]);
+
+  const addNote = async () => {
+    const userDoc = doc(database, "Users", `${auth.currentUser?.email}`);
+    const messageRef = collection(userDoc, "Notes");
+    try {
+      await addDoc(messageRef, {
+        notes: notes,
+      });
+        setNotes("");
+        console.log("Notes after reset:", notes); 
+    } catch (err) {
+      console.error(err);
     }
-    
-    
-    
+  };
+  const showNotes = async () => {
+    const userDoc = doc(database, "Users", `${auth.currentUser?.email}`);
+    const messageRef = collection(userDoc, "Notes");
+    try {
+      const data = await getDocs(messageRef);
+      const filteredData = data.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id,
+      }));
+        setNotesData(filteredData);
+    } catch (err) {
+      console.error(err);
+    }
+    };
+    console.log("notes data", notesData);
+
   return (
     <div>
       <img
@@ -63,8 +90,10 @@ export default function Notes() {
           >
             Add Notes...
           </Typography>
-          <input
-            placeholder="Notes"
+                  <input
+                       value={notes} 
+            onChange={(e) => setNotes(e.target.value)}
+            placeholder="Add Note here"
             style={{
               outline: "none",
               fontSize: "1vw",
@@ -75,6 +104,7 @@ export default function Notes() {
             }}
           />
           <Button
+            onClick={addNote}
             variant="contained"
             sx={{
               fontSize: "1vw",
@@ -87,6 +117,7 @@ export default function Notes() {
             Add
           </Button>
           <Button
+            onClick={showNotes}
             variant="contained"
             sx={{
               fontSize: "1vw",
@@ -96,7 +127,14 @@ export default function Notes() {
             }}
           >
             Show
-          </Button>
+                  </Button>
+                  <br />
+                  {notesData.map((data) => {
+                      return <>
+                          <li style={{marginTop:"0.5vw"}}>{data.notes}</li>
+                      
+                      </>
+                  })}
         </Box>
       </Modal>
     </div>

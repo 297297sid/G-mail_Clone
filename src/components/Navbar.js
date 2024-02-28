@@ -16,7 +16,7 @@ export default function Navbar({ setSearch }) {
   return (
       <Grid container>
           <Box sx={{ flexGrow: 1 }}>
-              <AppBar elevation={0} position="static" sx={{position:"fixed",top:"0",zIndex:"2",background:"#F9F9F9",minHeight:"5vw",minWidth:"5vw",paddingTop:"7px" ,paddingRight:"30px"}}>
+              <AppBar elevation={0} position="static" sx={{top:"0",zIndex:"2",background:"#F9F9F9",minHeight:"5vw",minWidth:"5vw",paddingTop:"7px" ,paddingRight:"30px"}}>
                   <div style={{display:"flex",alignItems:"center"}}>
                   <Grid item xs={2}>
                           <div style={{display:"flex",alignItems:"center"}}>
