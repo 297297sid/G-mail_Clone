@@ -138,7 +138,7 @@ export default function Message() {
               "& fieldset": { border: "none" },
             }}
           />
-          <br />
+          {/* <br /> */}
           {messageSent && ( // Display message sent notification
             <div className="vh">
               <span className="aT">

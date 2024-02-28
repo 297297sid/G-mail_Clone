@@ -11,6 +11,7 @@ import {  googleProvider } from "../firebase/Setup";
 import { useNavigate } from 'react-router-dom';
 
 const style = {
+  cursor:"pointer",
   position: 'absolute',
   top: '34%',
   left: '80%',
@@ -53,7 +54,7 @@ export default function Profile() {
         {auth.currentUser?.photoURL ? ( // Check if photoURL exists
         <Avatar
           onClick={handleOpen}
-          sx={{ marginLeft: "6vw", width: "2.7vw", height: "2.7vw" ,cursor:"pointer"}}
+          sx={{ position:"fixed",left:"96%",top:"2%", width: "2.7vw", height: "2.7vw" ,cursor:"pointer"}}
         //   sx={{ marginLeft: "13.5vw", width: "2vw", height: "2vw" }}
           src={auth.currentUser?.photoURL}
         />

@@ -7,10 +7,10 @@ import Keep from "../components/Keep"
 
 
 function Rightpanel(){
-    return(<div style={{backgroundColor:"#F9F9F9",minHeight:"100vh",position:"fixed",right:"0",width:"5vw",textAlign:"center",paddingTop:"6vw"}}>
+    return(<div style={{cursor:"pointer",backgroundColor:"#F9F9F9",minHeight:"100vh",position:"fixed",right:"0",width:"5vw",textAlign:"center",paddingTop:"6vw"}}>
        <Events/>
-        <br/>
-        <Keep/>
+        {/* <br/>
+        <Keep/> */}
         <br/>
         <Notes/>
         <br/>

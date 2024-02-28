@@ -49,7 +49,9 @@ function Leftpanel(props) {
       >
         <img src={Starred} style={{ width: "1.2vw", marginLeft: "2vw" }} />
         <span
+          onClick={() => props.setSubCollect("Starred")}
           style={{
+            cursor: "pointer",
             fontSize: "1.3vw",
             marginLeft: "1.6vw",
             fontWeight: "400",
@@ -69,7 +71,9 @@ function Leftpanel(props) {
       >
         <img src={Snooze} style={{ width: "1.2vw", marginLeft: "2vw" }} />
         <span
+           onClick={() => props.setSubCollect("Snoozed")}
           style={{
+            cursor: "pointer",
             fontSize: "1.3vw",
             marginLeft: "1.6vw",
             fontWeight: "400",
